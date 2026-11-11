@@ -6,7 +6,7 @@ Independent QA testing of two professional tax platforms — **Intuit ProConnect
 
 **Status: in progress.** Started 10 November 2026.
 
-📄 **[Read the test plan →](TEST_PLAN.md)**
+📄 **[Read the test plan →](test_plan.md)**
 
 ---
 
