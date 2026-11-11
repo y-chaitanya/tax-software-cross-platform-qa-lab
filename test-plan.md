@@ -83,7 +83,7 @@ Anything short of all three is documented as an observed difference, not reporte
 | Track B execution | In progress: B1 observed in ProConnect (missing SSN computes, fatal e-file diagnostic) | 11 Nov 2026 |
 | Test case write-ups | TC-001 written | 11 Nov 2026 |
 | Cross-platform comparison spreadsheet | Not started | |
-| Defect reports (if any qualify) | None identified so far| |
+| Defect reports (if any qualify) | None identified so far | |
 | Re-runnable test cases for any defect found | Not started | |
 | Final QA summary | Not started | |
 
