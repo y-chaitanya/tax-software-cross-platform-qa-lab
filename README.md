@@ -12,7 +12,7 @@ Independent QA testing of two professional tax platforms — **Intuit ProConnect
 
 ## What this project is
 
-Two mature tax platforms will agree on the arithmetic of a clean return. Where they differ is in what they do when the person entering the data makes a mistake — and that is where a support queue actually lives.
+For a clean return, the platforms should produce consistent results on comparable calculations. Differences arising from legitimate elections, assumptions, or rounding will be investigated separately. Where they differ is in what they do when the person entering the data makes a mistake — and that is where a support queue actually lives.
 
 So this project runs two tracks. **Track A** compares computed amounts, as a control. **Track B**, the primary one, introduces deliberate errors and records how each platform responds: whether it blocks, warns clearly, warns vaguely, silently substitutes a value, or accepts the entry without comment.
 
