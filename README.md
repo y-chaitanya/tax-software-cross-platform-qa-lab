@@ -1,109 +1,75 @@
 # Tax Software Cross-Platform QA Lab
 
-**Detailed Test Plan:** [View Test Plan](test-plan.md)
+Independent QA testing of two professional tax platforms — **Intuit ProConnect Tax** and **TaxSlayer Pro** — using synthetic individual tax returns.
 
-**Status:** In Progress  
-**Project Type:** Independent Software QA and Tax Workflow Validation  
-**Tools:** Intuit ProConnect Tax, TaxSlayer Pro (IRS Practice Lab), GitHub, independent tax calculations
-## Project Overview
+> **All data in this project is synthetic.** Taxpayer facts come from IRS Publication 4491-W practice scenarios or are invented outright. No real taxpayer information is entered into either platform at any point, and identifiers are masked in every screenshot.
 
-This independent testing project evaluates tax preparation software workflows through synthetic individual tax return scenarios.
+**Status: in progress.** Started 10 November 2026.
 
-The project focuses on cross-platform validation, independent calculation checks, input-handling behavior, discrepancy investigation, defect documentation, and regression testing.
+📄 **[Read the test plan →](TEST_PLAN.md)**
 
-The objective is to demonstrate a structured QA approach to tax software: reproduce a scenario, compare results, investigate differences, document evidence, and distinguish genuine defects from expected tax calculation behavior.
+---
 
-## Testing Approach
+## What this project is
 
-1. Develop synthetic individual tax return scenarios.
-2. Prepare the same scenarios in Intuit ProConnect Tax and TaxSlayer Pro.
-3. Compare calculated results and relevant tax forms.
-4. Independently verify selected calculations.
-5. Record and investigate discrepancies.
-6. Classify findings as expected behavior, input/configuration issues, or potential software defects.
-7. Document confirmed defects with reproducible steps and supporting evidence.
-8. Develop regression tests for verified defects.
+Two mature tax platforms will agree on the arithmetic of a clean return. Where they differ is in what they do when the person entering the data makes a mistake — and that is where a support queue actually lives.
 
-## Work Completed
+So this project runs two tracks. **Track A** compares computed amounts, as a control. **Track B**, the primary one, introduces deliberate errors and records how each platform responds: whether it blocks, warns clearly, warns vaguely, silently substitutes a value, or accepts the entry without comment.
 
-### ProConnect Tax — Initial Testing
+Both platforms are run in **tax year 2025** so amounts are comparable. TaxSlayer Pro also offers 2024; it is not used, because a cross-year comparison would measure the tax year rather than the software.
 
-Two synthetic practice scenarios have been tested:
+## The bar for calling something a defect
 
-- W-2 income only.
-- W-2 income plus Schedule C business activity.
+A difference between two platforms is not a defect. A finding is recorded as a defect candidate only when it is reproducible from written steps, the mechanism is understood and can be stated, and the behavior is inconsistent with the Code, the form instructions, or the platform's own documented behavior.
 
-Calculated results were compared against independent manual calculations. Both scenarios matched on key amounts, including adjusted gross income, qualified business income deduction, taxable income, and tax.
+**"No defects found" is a legitimate outcome and will be reported as one.**
 
-Two observed calculation differences were investigated and identified as expected behavior rather than defects:
+---
 
-- Tax Table midpoint treatment versus formula calculations.
-- Whole-dollar rounding of self-employment tax.
+## Current status
 
-### Input Handling and Diagnostic Observations
+| Deliverable | Status | Date |
+| --- | --- | --- |
+| Test plan | Complete | 11 Nov 2026 |
+| ProConnect environment | Set up | 10 Nov 2026 |
+| TaxSlayer Pro environment | Available, TY2025 selected | 11 Nov 2026 |
+| Track A — ProConnect | A1, A2 executed; all compared lines match hand calculations | 11 Nov 2026 |
+| Track A — TaxSlayer Pro | Not started | — |
+| Track B — ProConnect | B1 executed | 11 Nov 2026 |
+| Track B — TaxSlayer Pro | Not started | — |
+| Test case write-ups | TC-001 written | 11 Nov 2026 |
+| Cross-platform comparison spreadsheet | Not started | — |
+| Defect reports | None identified so far | — |
+| Final QA summary | Not started | — |
 
-Additional behaviors have been documented for investigation:
+*Status is recorded as it stands, not as I intend it to stand. Nothing above is marked complete that has not been done.*
 
-- A missing SSN allowed return calculation but generated a fatal e-file diagnostic.
-- Entering Schedule C expenses before gross receipts resulted in a $5,000 loss.
-- A withholding-only payment scenario generated an $85 Form 2210 penalty that requires further verification.
+---
 
-These observations are not classified as confirmed software defects. Further testing and tax-year-specific verification are required.
+## Findings so far
 
-### TaxSlayer Pro Practice
+### Calculation differences investigated and classified as expected behavior
 
-Fifteen fictional practice returns have been prepared in the IRS practice environment for tax year 2024. Scenarios include business income, rental income, capital gains, retirement distributions, Social Security, credits, and amended returns.
+**Tax Table midpoint treatment.** Computed tax differed from a direct formula calculation on the same taxable income. Cause: the IRS Tax Table assigns tax at the midpoint of each bracket range rather than to the exact figure. Not a defect — this is how the table is constructed.
 
-Cross-platform recreation of the ProConnect scenarios in TaxSlayer Pro is pending.
+**Whole-dollar rounding of self-employment tax.** Small difference traced to rounding convention on Schedule SE. Not a defect.
 
-## Planned Deliverables
+Both of these would read as discrepancies to someone comparing outputs without tracing the cause. Identifying *why* two correct systems produce different numbers is the point of the control track.
 
-| Deliverable | Status |
-|---|---|
-| Test plan | Complete — November 11, 2026 |
-| Synthetic test scenarios | In Progress |
-| ProConnect testing | A1 and A2 executed; QBI checked; compared amounts match independent hand calculations |
-| TaxSlayer Pro comparison | Pending cross-platform execution |
-| Cross-platform comparison spreadsheet | Not started |
-| Independent calculation worksheets | In progress |
-| Defect reports (if any qualify) | None identified so far |
-| Regression test suite | Planned |
-| Synthetic-data screenshots | Planned |
-| Final QA summary | Planned |
+### Input handling
 
-## QA Documentation Standards
+**B1 — Taxpayer SSN omitted (ProConnect).** The return computes normally with the SSN missing; the omission surfaces only as a fatal e-file diagnostic. Documented as observed behavior; the comparison against TaxSlayer Pro is pending.
 
-Each test case will record:
+### Open observations — not yet verified
 
-- Test case ID
-- Tax year and software
-- Scenario and assumptions
-- Preconditions and input data
-- Reproduction steps
-- Expected result
-- Actual result
-- Evidence and observations
-- Test status
+**Form 2210 penalty on a withholding-only scenario.** An $85 underpayment penalty was computed. Requires a safe harbor check — whether withholding reached 90% of current-year tax, or 100%/110% of prior-year — before this is classified. Unresolved, and not reported as a defect.
 
-Potential defects will be reported only when the behavior is reproducible and evidence supports a genuine software problem.
+---
 
-## Customer Support and Issue Tracking — Learning in Progress
+## Why I built this
 
-Additional practice will cover:
+I hold an active IRS Enrolled Agent credential and spent four years reproducing and writing up user-reported defects for an engineering team. This project puts those two halves in the same place: testing tax software as someone who can both drive the software and independently verify what it computed.
 
-- Zendesk ticket intake, prioritization, customer communication, and escalation.
-- Linear issue creation, reproduction steps, labels, and engineering handoff.
-- Browser Developer Tools for technical investigation.
-- Regression testing and release verification.
+---
 
-## Data Integrity and Limitations
-
-- All scenarios use fictional taxpayer information.
-- No real taxpayer personally identifiable information is included.
-- Tax calculation observations are evaluated in the context of the applicable tax year.
-- Expected differences are not reported as software defects.
-- Only tests actually performed and findings actually verified will be marked complete.
-
-## Project Goal
-
-Build a practical, evidence-based demonstration of tax software QA skills, combining tax knowledge, application testing, cross-platform validation, technical investigation, and clear communication between customer support and engineering.
+**Chaitanya Yarlagadda, EA** · [github.com/y-chaitanya](https://github.com/y-chaitanya)
