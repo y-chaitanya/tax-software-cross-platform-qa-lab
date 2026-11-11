@@ -7,6 +7,7 @@ Independent QA testing of two professional tax platforms — **Intuit ProConnect
 **Status: in progress.** Started 10 November 2026.
 
 📄 **[Read the test plan →](test-plan.md)**
+📄 **[TC-001: W-2 only →](test-cases/TC-001-w2-only.md)**
 
 ---
 
@@ -68,7 +69,8 @@ Both of these would read as discrepancies to someone comparing outputs without t
 
 ## Why I built this
 
-I hold an active IRS Enrolled Agent credential and spent four years reproducing and writing up user-reported defects for an engineering team. This project puts those two halves in the same place: testing tax software as someone who can both drive the software and independently verify what it computed.
+I hold an active IRS Enrolled Agent credential and spent over three years as a software engineer reproducing user-reported issues and writing them up for an engineering team.
+
 
 ---
 
