@@ -1,9 +1,10 @@
 # Tax Software Cross-Platform QA Lab
 
+**Detailed Test Plan:** [View Test Plan](test-plan.md)
+
 **Status:** In Progress  
 **Project Type:** Independent Software QA and Tax Workflow Validation  
-**Tools:** Intuit ProConnect Tax, TaxSlayer Pro, Excel, SQL, GitHub
-
+**Tools:** Intuit ProConnect Tax, TaxSlayer Pro (IRS Practice Lab), GitHub, independent tax calculations
 ## Project Overview
 
 This independent testing project evaluates tax preparation software workflows through synthetic individual tax return scenarios.
@@ -53,19 +54,19 @@ These observations are not classified as confirmed software defects. Further tes
 
 Fifteen fictional practice returns have been prepared in the IRS practice environment for tax year 2024. Scenarios include business income, rental income, capital gains, retirement distributions, Social Security, credits, and amended returns.
 
-Cross-platform recreation of the ProConnect scenarios is in progress.
+Cross-platform recreation of the ProConnect scenarios in TaxSlayer Pro is pending.
 
 ## Planned Deliverables
 
 | Deliverable | Status |
 |---|---|
-| Initial test plan | Started |
+| Test plan | Complete — November 11, 2026 |
 | Synthetic test scenarios | In Progress |
-| ProConnect testing | Initial scenarios completed |
-| TaxSlayer Pro comparison | In Progress |
-| Cross-platform comparison spreadsheet | Planned |
-| Independent calculation worksheets | In Progress |
-| Formal defect reports | Pending verified findings |
+| ProConnect testing | A1 and A2 executed; QBI checked; compared amounts match independent hand calculations |
+| TaxSlayer Pro comparison | Pending cross-platform execution |
+| Cross-platform comparison spreadsheet | Not started |
+| Independent calculation worksheets | In progress |
+| Defect reports (if any qualify) | None identified so far |
 | Regression test suite | Planned |
 | Synthetic-data screenshots | Planned |
 | Final QA summary | Planned |
