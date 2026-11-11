@@ -4,7 +4,7 @@ Chaitanya Yarlagadda, EA · Project started 10 November 2026 · Status: in progr
 
 ## Objective
 
-Prepare identical synthetic tax returns in two professional tax platforms, Intuit ProConnect Tax and TaxSlayer Pro, and compare them on two axes: the amounts each one computes, and how each one behaves when given incomplete or invalid input. The second axis is the primary one. Two mature platforms should agree on the arithmetic of a clean return; where they differ meaningfully is in what they do when the person entering the data makes a mistake.
+Prepare identical synthetic tax returns in two professional tax platforms, Intuit ProConnect Tax and TaxSlayer Pro, and compare them on two axes: the amounts each one computes, and how each one behaves when given incomplete or invalid input. The second axis is the primary one. For clean returns, the platforms should produce consistent results on comparable calculations, while differences in legitimate elections, assumptions, and rounding are investigated separately; where they differ meaningfully is in what they do when the person entering the data makes a mistake.
 
 ## Why this axis
 
@@ -83,7 +83,7 @@ Anything short of all three is documented as an observed difference, not reporte
 | Track B execution | In progress: B1 observed in ProConnect (missing SSN computes, fatal e-file diagnostic) | 11 Nov 2026 |
 | Test case write-ups | TC-001 written | 11 Nov 2026 |
 | Cross-platform comparison spreadsheet | Not started | |
-| Defect reports (if any qualify) | None so far | |
+| Defect reports (if any qualify) | None identified so far| |
 | Re-runnable test cases for any defect found | Not started | |
 | Final QA summary | Not started | |
 
